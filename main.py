@@ -7,10 +7,23 @@
 #\_|  |_/\__,_|_| |_\_| \___|\____/
 
 # LIBRARIES
+
 import os
 import sys
 import shutil
 from os import path
+from tkinter import *
+from tkinter import messagebox
+
+# TKINTER COMMANDS
+
+win = Tk()
+win.title(" COOKIE DELETER ")
+win.geometry("500x300") 
+
+T = Text(win, height = 5, width = 52)  
+l = Label(win, text = "Fact of the Day") 
+l.config(font =("Courier", 14))
 
 # DIRECTORIES
 
@@ -27,39 +40,37 @@ discord_dir1 = path.expandvars(r'%APPDATA%\discord\Cookies')
 discord_dir2 = path.expandvars(r'%APPDATA%\discord\Cookies-journal')
 
 # REMOVE COMMANDS
+info = """There should be a discord button here. If you don't have one, fear not, you just don't have the discord app"""
+def teams():
+  os.remove(teams_dir1)
+  os.remove(teams_dir2)
+  shutil.rmtree(teams_dir4)
+  shutil.rmtree(teams_dir5)
+  shutil.rmtree(teams_dir6)
+  shutil.rmtree(teams_dir7)
+  if os.path.isdir(teams_dir3) == True:
+    shutil.rmtree(teams_dir3)
+  else:
+    print("Folder TEMP/tmp doesn't exists!")
+  messagebox.showinfo(None, 'Done! your cookies was deleted!')
+def discord():
+  os.remove(discord_dir1)
+  os.remove(discord_dir2)
+  messagebox.showinfo(None, 'Done! your cookies was deleted!')
+
+# BUTTONS
+
+button1 = Button(win, text="Clear Teams Cookies", command=teams)
+button2 = Button(win, text="Clear Discord Cookies", command=discord)
+
+# IF'S
+
 if path.exists(discord_dir0) == True:
-    print("Hi!")
-    print("What cookies you want to delete?")
-    print(" ")
-    print("1. Teams")
-    print("2. Discord")
-    print(" ")
-    a = int(input("Your choose: "))
-    if a == 1:
-        os.remove(teams_dir1)
-        os.remove(teams_dir2)
-        shutil.rmtree(teams_dir4)
-        shutil.rmtree(teams_dir5)
-        shutil.rmtree(teams_dir6)
-        shutil.rmtree(teams_dir7)
-        if os.path.isdir(teams_dir3) == True:
-            shutil.rmtree(teams_dir3)
-        else:
-            print("Folder TEMP/tmp doesn't exists!")
-            print("Done! your cookies was deleted!")
-    if a == 2:
-        os.remove(discord_dir1)
-        os.remove(discord_dir2)
-        print("Done! your cookies was deleted!")
+  button2.pack()
 else:
-    os.remove(teams_dir1)
-    os.remove(teams_dir2)
-    shutil.rmtree(teams_dir4)
-    shutil.rmtree(teams_dir5)
-    shutil.rmtree(teams_dir6)
-    shutil.rmtree(teams_dir7)
-    if os.path.isdir(teams_dir3) == True:
-        shutil.rmtree(teams_dir3)
-    else:
-        print("Folder TEMP/tmp doesn't exists!")
-        print("Done! your cookies was deleted!")
+  T.insert(END, info) 
+  T.pack()
+
+# LOOPS, PACKS, GRIDS
+button1.pack()
+win.mainloop()
