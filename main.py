@@ -22,7 +22,6 @@ win.title(" COOKIE DELETER ")
 win.geometry("500x300") 
 
 T = Text(win, height = 5, width = 52)  
-l = Label(win, text = "Fact of the Day") 
 l.config(font =("Courier", 14))
 
 # DIRECTORIES
